@@ -45,7 +45,8 @@ async function signup(req, res) {
             to: req.body.email,
             subject: 'Sign Up Succesfully',
             text: `
-                Hey ${req.body.username} apka account succesfully ban gya hai in denstist app ${token}
+                Hey ${req.body.username} apka account succesfully ban gya hai in denstist app 
+                ${token}
             `
         };
     
