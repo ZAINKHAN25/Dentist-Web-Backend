@@ -34,14 +34,14 @@ async function signup(req, res) {
         const transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
-              user: 'zainarfeen87@gmail.com',
-              pass: 'koxs uhlr iche nlsj'
+              user: process.env.myEmail,
+              pass: process.env.myEmailPass
             }
           });
     
         // Email options
         const mailOptions = {
-            from: 'zainarfeen87@gmail.com',
+            from: process.env.myEmail,
             to: req.body.email,
             subject: 'Sign Up Succesfully',
             text: `
