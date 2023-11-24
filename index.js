@@ -7,6 +7,7 @@ import login from './Controllers/login.js'
 import verfiyToken from './Controllers/verfiyToken.js'
 import addPatientData from './Controllers/addPatientData.js'
 import verifyLogin from './Controllers/verifyLogin.js'
+import getAllPatientData from './Controllers/getAllPatientData.js'
 
 
 const app = express();
@@ -21,6 +22,7 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
     app.post('/login', login);
     app.post('/verfiy-token', verfiyToken);
     app.post('/add-ptnt-data', verifyLogin, addPatientData)
+    app.post('/ptnt-data', verifyLogin, getAllPatientData)
 }).catch(error => {
     console.error("Error connecting to DB:", error);
 });
