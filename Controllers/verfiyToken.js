@@ -2,6 +2,8 @@ import jwt from 'jsonwebtoken';
 import User from "../models/User.js";
 
 
+
+// gmail k andar ye gya hai us ke bad gmail se ye api call karwai hai jo sign up karwai gi
 async function verfiyToken(req, res){
     try {
         const decoded = await jwt.verify(req.body.token, process.env.secret_Key);

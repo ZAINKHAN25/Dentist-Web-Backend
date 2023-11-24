@@ -19,8 +19,8 @@ async function addPatientData(req, res){
             res.status(404).send("Plese fill up the all form completely");
         }
     } catch (error) {
-        console.error('Eror to add patient data:', err);
-        res.status(404).send(err.message);
+        console.error('Eror to add patient data:', error);
+        res.status(404).send(error.message);
     }
 }
 

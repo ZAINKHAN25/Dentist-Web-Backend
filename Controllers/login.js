@@ -1,5 +1,6 @@
 import User from "../models/User.js";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken';
 
 async function login(req, res){
         try {
@@ -8,14 +9,14 @@ async function login(req, res){
                 res.status(404).json("User not found")
             }
             const validPassword = await bcrypt.compare(req.body.password, user.password)
-            console.log(validPassword);
             if(!validPassword){
                 res.status(400).json("Wrong Password")
             }
-    
-            res.status(200).json(user)
+            const token = jwt.sign({user}, process.env.secret_LoginKey , { expiresIn: '10d' });
+            res.status(200).json({user, logintoken: token})
         } catch (error) {
             res.status(500).json(error)
+            console.log(error, "Error");
         }
 }
 

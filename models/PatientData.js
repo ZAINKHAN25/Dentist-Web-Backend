@@ -4,9 +4,7 @@ const PatientSchema = new mongoose.Schema({
     patientName: {
         type: String,
         require: true,
-        min: 3,
-        max: 20,
-        unique: true,
+        unique: false
     },
     patientdescription: {
         type: String,

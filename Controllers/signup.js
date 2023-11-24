@@ -1,8 +1,6 @@
-import User from "../models/User.js";
-
 import bcrypt from "bcrypt";
 import nodemailer from 'nodemailer';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 
 async function signup(req, res) {
     try {
