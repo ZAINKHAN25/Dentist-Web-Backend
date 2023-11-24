@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import signup from './Controllers/signup.js'
 import login from './Controllers/login.js'
 import verfiyToken from './Controllers/verfiyToken.js'
+import addPatientData from './Controllers/addPatientData.js'
 
 
 const app = express();
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
     app.post('/sign-up', signup);
     app.post('/login', login);
     app.post('/verfiy-token', verfiyToken);
+    app.post('./add-ptnt-data', addPatientData)
 }).catch(error => {
     console.error("Error connecting to DB:", error);
 });

@@ -9,15 +9,6 @@ async function signup(req, res) {
         // genereate new password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt)
-
-        // const newUser = new User({
-        //     username: req.body.username,
-        //     password: hashedPassword,
-        //     email: req.body.email,
-        //     desc: req.body.desc,
-        //     age: req.body.age,
-        //     profession: req.body.profession
-        // });
         
         const newUser = {
                 username: req.body.username,
