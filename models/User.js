@@ -12,26 +12,13 @@ const UserSchema = new mongoose.Schema({
         type: String,
         max: 50,
         require: true,
-        unique: false
+        unique: true
     },
     password: {
         type: String,
         require: true,
         min: 6
     },
-    desc : {
-        type: String,
-        max: 500,
-        require: false
-    },
-    age: {
-        type: Number,
-        require: false
-    },
-    profession: {
-        type: String,
-        require: true
-    }
 },
     { timestamps: true }
 )

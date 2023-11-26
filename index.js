@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
+import cors from "cors"
 
 import signup from './Controllers/signup.js';
 import login from './Controllers/login.js';
@@ -16,6 +17,7 @@ const app = express();
 const port = 8000;
 
 app.use(express.json());
+app.use(cors())
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
