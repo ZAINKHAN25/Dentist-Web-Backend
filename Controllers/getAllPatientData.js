@@ -1,5 +1,6 @@
 // Import necessary modules
 import PatientData from "../models/PatientData.js";
+import jwt from 'jsonwebtoken'
 
 // Function to get all patient data
 async function getAllPatientData(req, res) {

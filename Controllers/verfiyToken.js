@@ -5,7 +5,7 @@ import User from '../models/User.js';
 async function verifyToken(req, res) {
     try {
         // Decode the token
-        const decoded = await jwt.verify(req.body.token, process.env.secret_Key);
+        const decoded = await jwt.verify(req.body.logintoken, process.env.secret_Key);
 
         // Check if the email already exists
         const filterUser = await User.findOne({ email: decoded.email });

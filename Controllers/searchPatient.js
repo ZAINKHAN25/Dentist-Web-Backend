@@ -16,7 +16,7 @@ async function searchPatient(req, res) {
 
     for (let i = 0; i < dataPropertiesName.length; i++) {
       const currentProperty = await PatientData.find({
-        [dataPropertiesName[i]]: searchedItem,
+        [dataPropertiesName[i].toLowerCase()]: searchedItem.toLowerCase(),
       });
 
       if (currentProperty.length !== 0) {
