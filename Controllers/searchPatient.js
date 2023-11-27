@@ -2,10 +2,9 @@ import PatientData from "../models/PatientData.js";
 
 async function searchPatient(req, res) {
   try {
-    var searchedItem = req.body.search;
-    let result;
-    let errorFalse = true;
-    var dataPropertiesName = [
+    const searchedItem = req.body.search;
+
+    const fieldsToSearch = [
       "patientName",
       "patientdescription",
       "patientrupees",
@@ -14,28 +13,24 @@ async function searchPatient(req, res) {
       "patientyear",
     ];
 
-    for (let i = 0; i < dataPropertiesName.length; i++) {
-      const currentProperty = await PatientData.find({
-        [dataPropertiesName[i].toLowerCase()]: searchedItem.toLowerCase(),
-      });
+    let result = [];
+    let matchedField = null;
 
-      if (currentProperty.length !== 0) {
-        result = currentProperty;
-        errorFalse = true;
+    for (const field of fieldsToSearch) {
+      const query = { [field]: { $regex: new RegExp(searchedItem, 'i') } };
+      const data = await PatientData.find(query);
+
+      if (data && data.length > 0) {
+        result = data;
+        matchedField = field;
         break;
-      } else {
-        errorFalse = false;
       }
     }
 
-    if (!errorFalse) {
-      res.status(404).send("Not found");
-    } else {
-      res.status(200).json(result);
-    }
+    res.status(200).json({ result, matchedField });
   } catch (error) {
     console.error(error);
-    res.status(500).send(error.message);
+    res.status(500).json(error.message);
   }
 }
 
