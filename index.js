@@ -22,6 +22,14 @@ dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log('Sucesfully connected to db');
+    app.get('/', (req, res) => {
+        res.status(200).send(
+            {
+                status: 'succes',
+                message: 'You are connected'
+            }
+        )
+    })
     app.post('/sign-up', signup);
     app.post('/login', login);
     app.post('/verfiy-token', verfiyToken);
