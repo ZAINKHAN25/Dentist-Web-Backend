@@ -46,6 +46,23 @@ const connect = () => {
         .connect(process.env.MONGO_URL)
         .then(() => {
             console.log(`connected to DB`);
+
+            app.get('/', (req, res) => {
+                res.status(200).send(
+                    {
+                        status: 'succes',
+                        message: 'You are connected'
+                    }
+                )
+            })
+            
+            app.post('/sign-up', signup);
+            app.post('/login', login);
+            app.post('/verfiy-token', verfiyToken);
+            app.post('/add-ptnt-data', verifyLogin, addPatientData);
+            app.post('/ptnt-data', verifyLogin, getAllPatientData);
+            app.post('/search-patient', verifyLogin, searchPatient)
+            app.post('/search-single-patient', verifyLogin, searchSinglePatient)
         })
         .catch((err) => {
             throw err;
