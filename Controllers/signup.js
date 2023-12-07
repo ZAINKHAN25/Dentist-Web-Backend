@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import User from "../models/User.js";
 
 async function signup(req, res) {
+  console.log("Request hit hoe");
   try {
     const filterUser = await User.findOne({ email: req.body.email });
 
