@@ -41,33 +41,33 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
     console.error("Error connecting to DB:", error);
 });
 
-// const connect = () => {
-//     mongoose
-//         .connect(process.env.MONGO_URL)
-//         .then(() => {
-//             console.log(`connected to DB`);
-//         })
-//         .catch((err) => {
-//             throw err;
-//         });
-// };
+const connect = () => {
+    mongoose
+        .connect(process.env.MONGO_URL)
+        .then(() => {
+            console.log(`connected to DB`);
+        })
+        .catch((err) => {
+            throw err;
+        });
+};
 
-// app.get('/', (req, res) => {
-//     res.status(200).send(
-//         {
-//             status: 'succes',
-//             message: 'You are connected'
-//         }
-//     )
-// })
+app.get('/', (req, res) => {
+    res.status(200).send(
+        {
+            status: 'succes',
+            message: 'You are connected'
+        }
+    )
+})
 
-// app.post('/sign-up', signup);
-// app.post('/login', login);
-// app.post('/verfiy-token', verfiyToken);
-// app.post('/add-ptnt-data', verifyLogin, addPatientData);
-// app.post('/ptnt-data', verifyLogin, getAllPatientData);
-// app.post('/search-patient', verifyLogin, searchPatient)
-// app.post('/search-single-patient', verifyLogin, searchSinglePatient)
+app.post('/sign-up', signup);
+app.post('/login', login);
+app.post('/verfiy-token', verfiyToken);
+app.post('/add-ptnt-data', verifyLogin, addPatientData);
+app.post('/ptnt-data', verifyLogin, getAllPatientData);
+app.post('/search-patient', verifyLogin, searchPatient)
+app.post('/search-single-patient', verifyLogin, searchSinglePatient)
 
 app.listen(port, () => {
     console.log(`App is running on port number http://localhost:${port}/`);
