@@ -70,6 +70,6 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 // app.post('/search-single-patient', verifyLogin, searchSinglePatient)
 
 app.listen(port, () => {
-    console.log(`App is running on port number http:localhost:${port}`);
+    console.log(`App is running on port number http://localhost:${port}/`);
     // connect();
 })
