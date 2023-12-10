@@ -37,6 +37,7 @@ async function signup(req, res) {
       }
     });
 
+    // this is Comment
     // Email options
     const mailOptions = {
       from: process.env.myEmail,
